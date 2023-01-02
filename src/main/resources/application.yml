@@ -1,0 +1,48 @@
+server:
+  port: 8889
+  servlet:
+    session:
+      timeout: 600
+# ssl配置，如果需要微信小程序使用该网站需要配置
+#  ssl:
+#    key-store: classpath:junruo.pfx
+#    key-store-password: A4OV5yTU
+#    key-store-type: PKCS12
+#    enabled: true
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/ssm_db #ssm_db为数据库名
+      username: root #数据库用户名
+      password: 123456 #数据库密码
+  cloud:
+    # 阿里云oss配置
+    alicloud:
+      access-key: #阿里云AccessKey  百度
+      secret-key: #阿里云SecretKey  百度
+      bucket:  #在阿里云oss上创建的仓库bucket名  百度
+      oss:
+        endpoint:  #在阿里云oss上创建的仓库里面概览Endpoint（地域节点）  百度
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  thymeleaf:
+    prefix: classpath:/static/
+    mode: HTML
+    cache: false
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  security:
+    user:
+      name: 123 #登录账号
+      password: 123456 #登录密码
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tbl_
+      id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
